@@ -319,14 +319,14 @@ Alle Benutzer sind erfolgreich und korrekt eingerichtet. Dies kann man am File i
 
 ### Zugang mit SSH-Tunnel abgesichert
 
-Hier wird mit SSH über Putty zugegriffen.
+Hier greife ich mit SSH über Putty zu.
 <br>
 ![224703688-83d051b9-40ec-4df1-8891-4fd0eb801e12](https://user-images.githubusercontent.com/125886145/224703792-86e986ad-d445-47ac-8703-71b016c5be8c.png)
 <br>
 
 
 ### Reverse-Proky eingerichtet
-Geht der Zugriff mit localhost:8011, so ist der Reverse Proxy erfolgreich konfiguriert. Dies konnte mit Curl getestet werden.
+Geht der Zugriff mit localhost:8011, so habe ich den Reverse Proxy erfolgreich konfiguriert. Dies habe ich mit Curl getestet.
 
 ![image](https://user-images.githubusercontent.com/125886145/224703206-37f4d4fb-0d38-4f97-a0b7-fdc0dab19ced.png)
 <br>
@@ -336,7 +336,7 @@ Geht der Zugriff mit localhost:8011, so ist der Reverse Proxy erfolgreich konfig
 
 ### Port forwarding
 
-Um den Zugriff auf die Webseite zu erlangen, ist der Port 80 auf 8011 weitergeleitet.
+Um den Zugriff auf die Webseite zu erlangen, habe ich den Port 80 auf 8011 weitergeleitet.
 <br>
 ![image](https://user-images.githubusercontent.com/125886145/223121317-29f7e78a-3862-4c36-a0b2-55c8ed210ff7.png)
 
@@ -352,15 +352,12 @@ Um den Zugriff auf die Webseite zu erlangen, ist der Port 80 auf 8011 weitergele
 - Schonmal von Container gehört aber nie verwendet
 
 #### Neues Wissen
-- Ich lernte Vagrant kennen
-- Ich lernte mit GitHub zu arbeiten, da ich noch nie damit arbeitete
-- Ich erfuhr wie man den Prozess vom aufsetzen automatisieren kann
-- Mir wurden die Vorteile davon klar
-- Ich konnte einen SSH Key einfach erstellen und einbinden
-- Ich lernte verschiedene Sicherheitsaspekte kennen
-  - Die Begriffe Authentizität und Authentisierung wurden aufgefrischt, da ich schon länger nicht mehr damit zu tun hatte
-- Ich lernte wie man die Firewall auf Linux konfiguriert
-- Die Benutzung von Proxys wurden mir wieder bewusst, da ich vor langer Zeit schonmal damit gearbeitet habe
+- Auch wenn ich noch nie mit Git Hub gearbeitet habe, habe ich gelernt mit dem Tool zu arbeiten.
+- Ich habe Vagrant kennengelernt
+- Ich durfte erfahren wie man den Stagingprozess massiv effizzienter getsallten kann.
+- Der SSH Key liess sich ganz einfach implenterien.
+- Ich lernte wie man eine Firewall ganz einfach mit Linux installiert
+- Ich habe viel über Proxy gelernt.
 
 <br>
 
