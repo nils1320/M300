@@ -293,7 +293,7 @@ Zuerst konnte ich die VM mit dem Vagrantfile nicht erstellen.
 Nun geht es. Ich hatte vorhin Port 101 für den Host verwendet, aber mit diesem ging es nicht. Also habe ich den Port zu 8011 gewechselt da dieser sicher frei ist. Nun geht es endlich.
 <br>
 
-![image](https://user-images.githubusercontent.com/125886145/223137480-1a4c15ec-11ff-492c-9d05-fd76f79633fe.png)
+![image](https://github.com/nils1320/M300/blob/main/Pictures/5.png?raw=true)
 
 <br>
 
@@ -314,7 +314,7 @@ Da der Zugriff funktioniert, sind auch die Rules erfolgreich gesetzt worden.
 
 Alle Benutzer sind erfolgreich und korrekt eingerichtet. Dies kann man am File in /etc/passwd sehen.
 <br>
-![image](https://user-images.githubusercontent.com/125886145/224705192-a2a9fb97-6c33-43f8-a296-43fac6cd43e2.png)
+![image](https://github.com/nils1320/M300/blob/main/Pictures/6.png?raw=true)
 <br>
 
 ### Zugang mit SSH-Tunnel abgesichert
@@ -338,7 +338,7 @@ Geht der Zugriff mit localhost:8011, so habe ich den Reverse Proxy erfolgreich k
 
 Um den Zugriff auf die Webseite zu erlangen, habe ich den Port 80 auf 8011 weitergeleitet.
 <br>
-![image](https://user-images.githubusercontent.com/125886145/223121317-29f7e78a-3862-4c36-a0b2-55c8ed210ff7.png)
+![image](https://github.com/nils1320/M300/blob/main/Pictures/7.png?raw=true)
 
 <br>
 <br>
