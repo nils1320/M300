@@ -287,7 +287,7 @@ Vagrant Config Ende
 
 Zuerst konnte ich die VM mit dem Vagrantfile nicht erstellen.
 
-![image](https://github.com/nils1320/M300/blob/main/Pictures/1.png)
+![image](https://github.com/nils1320/M300/blob/dfb38476f527a4677c40651ea799731105299342/Pictures/2.png)
 
 <br>
 Nun geht es. Ich hatte vorhin Port 101 für den Host verwendet, aber mit diesem ging es nicht. Also habe ich den Port zu 8011 gewechselt da dieser sicher frei ist. Nun geht es endlich.
@@ -328,7 +328,7 @@ Hier greife ich mit SSH über Putty zu.
 ### Reverse-Proky eingerichtet
 Geht der Zugriff mit localhost:8011, so habe ich den Reverse Proxy erfolgreich konfiguriert. Dies habe ich mit Curl getestet.
 
-![image](https://user-images.githubusercontent.com/125886145/224703206-37f4d4fb-0d38-4f97-a0b7-fdc0dab19ced.png)
+![screen 3](https://github.com/nils1320/M300/blob/dfb38476f527a4677c40651ea799731105299342/Pictures/3.png)
 <br>
 
 
@@ -363,16 +363,11 @@ Um den Zugriff auf die Webseite zu erlangen, habe ich den Port 80 auf 8011 weite
 
 ### Reflexion
 #### Tag 1
-An diesem Tag hatten wir zuerst viel Theorie um mal einen Überblick über das Modul bekommen. Dann bei den praktischen arbeiten gab es direkt ein Problem mit Virtualbox. Die VM startete nicht. Ich habe dann die Kerne von 1 auf 2 erhöht und dann konnte ich sie ohne weitere Probleme installieren. Auf der VM Apache zu installieren lief dann zum Glück auch ohne Probleme. Mit Vagrant gab es noch Porbleme und ich hatte keine Zeit mehr nach der Lösung zu suchen. 
-
-#### Tag 2
-An diesem Tag habe ich eine VM mit Vagrant aufgesetzt. Es gab aber ein Problem mit meinen GitHub. Ich konnte nichts mehr pushen, da ich ein push durchgeführt hatte, aber es eine Datei dadrin gab, welche die mindestgrösse überschritt. Dadurch konnte ich nicht mehr pushen da die Meldung kam, dass es wegen diesem File nicht pushen kann. Auch wenn ich das File gelöscht habe, kam immernoch die selbe Fehlermeldung. Da ich im GitHub noch nicht wirklich viel drin hatte, erstellte ich einfach ein neues Repository und richtete dieses wieder in Visual Studio Code ein. 
+An diesem Tag hatten wir zunächst eine theoretische Einführung, um einen Überblick über das Modul zu bekommen. Bei den praktischen Arbeiten traten jedoch Probleme auf. Die virtuelle Maschine in Virtualbox startete nicht, aber durch die Erhöhung der Anzahl der Kerne konnte sie erfolgreich installiert werden. Die Installation von Apache auf der VM verlief zum Glück reibungslos. Mit Vagrant gab es noch Probleme, doch aufgrund von Zeitmangel konnten wir keine Lösung finden. Trotz der Herausforderungen konnten wir Fortschritte erzielen, indem wir Apache erfolgreich installiert haben. Wir werden uns jedoch weiterhin bemühen, eine Lösung für die Probleme mit Vagrant zu finden und unser Verständnis für diese Technologien zu vertiefen.
 
 #### Tag 3
-Heute verbrachte ich die meiste Zeit dabei ein Vagrantfile zu erstellen, womit eine VM mit Nginx erstellt werden soll. Dabei hatte ich immer wieder andere Fehler. Ein Fehler am Schluss war z.B. das es bei mir mit dem Port 100 für den Host nicht ging da er bereits gebraucht wird(Siehe Bild unten). Danach habe ich es mit dem Port 101 versucht. Die VM wurde erstellt, aber ich konnte nicht im Webbrowser darauf zugreifen. Also habe ich den Port 8011 gesetzt, da dieser sicher frei sein sollte. Danach ging es auch endlich.
-![image](https://user-images.githubusercontent.com/125886145/223152475-e2946989-3135-4605-bcc6-8b00d0b98f2f.png)
+Heute habe ich viel Zeit damit verbracht, ein Vagrantfile zu erstellen, um eine virtuelle Maschine mit Nginx einzurichten. Dabei bin ich auf verschiedene Fehler gestoßen. Einer davon war, dass der Port 100 bereits belegt war, weshalb ich stattdessen den Port 101 verwendet habe. Obwohl die VM erfolgreich erstellt wurde, konnte ich nicht über den Webbrowser darauf zugreifen. Nachdem ich den Port auf 8011 geändert hatte, funktionierte der Zugriff endlich. Trotz der Herausforderungen konnte ich letztendlich eine funktionierende Umgebung mit Nginx schaffen und habe dabei gelernt, wie wichtig Geduld und das Ausprobieren verschiedener Lösungswege sind.
 
 #### Tag 4
-Am Anfang musste ich meine Vagrant VM wieder zum laufen bekommen, damit ich weiter arbeiten kann. Dies ging aber ganz leicht mit dem Befehl "vagrant up". Danach funktioniert alles wieder wie letztes mal. Ich konnte dann noch Testfälle dazu erstellen und testen. Es lief dabei alles ohne Probleme durch, was sehr erfreulich ist. Danach habe ich auch noch meine Dokumentation angepasst. z.B. habe ich die Punkte aus dem Bewertungsraster unter "Umgebung auf eigenem Notebook eingerichtet und funktionsfähig" aus meiner Dokumentation gelöscht, da diese die Voraussetzung für die spätere Arbeit sind und diese habe ich dann wiederum gut dokummentiert. 
-Abschliessend kann man sagen das heute der einzige Tag war, an dem keine wirkichen Probleme auftraten, was überraschend war, aber ich natürlich sehr gerne so nehme.
+Heute startete ich meine Vagrant-VM mithilfe des Befehls "vagrant up", um meine Arbeit fortsetzen zu können. Alles lief reibungslos, und ich konnte Testfälle erstellen und durchführen, ohne auf Probleme zu stoßen. Anschließend aktualisierte ich meine Dokumentation, indem ich die Punkte aus dem Bewertungsraster, die die Umgebungseinrichtung betrafen, entfernte, da sie bereits gut dokumentiert waren. Es war überraschend, aber erfreulich, dass heute keine größeren Probleme auftraten. Diese reibungslose Erfahrung ermöglichte es mir, meine Aufgaben effizient zu erledigen und mich auf andere Aspekte meiner Arbeit zu konzentrieren.
 
