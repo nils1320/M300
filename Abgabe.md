@@ -1,6 +1,6 @@
 # LB2
 
-## Inhaltsverzeichnis
+## Inhalt
 - [LB2](#lb2)
   - [Inhaltsverzeichnis](#inhaltsverzeichnis)
     - [Netzwerkplan](#netzwerkplan)
