@@ -287,7 +287,7 @@ Vagrant Config Ende
 
 Zuerst konnte ich die VM mit dem Vagrantfile nicht erstellen.
 
-![image](https://github.com/nils1320/M300/blob/dfb38476f527a4677c40651ea799731105299342/Pictures/2.png)
+![screen 1](https://github.com/nils1320/M300/blob/main/Pictures/1.png?raw=true)
 
 <br>
 Nun geht es. Ich hatte vorhin Port 101 für den Host verwendet, aber mit diesem ging es nicht. Also habe ich den Port zu 8011 gewechselt da dieser sicher frei ist. Nun geht es endlich.
@@ -321,14 +321,14 @@ Alle Benutzer sind erfolgreich und korrekt eingerichtet. Dies kann man am File i
 
 Hier greife ich mit SSH über Putty zu.
 <br>
-![screen2](https://github.com/nils1320/M300/blob/db26777ca84a225ec37c75b514ad2f4db55ea213/Pictures/2.png)
+![screen 2](https://github.com/nils1320/M300/blob/main/Pictures/2.png?raw=true)
 <br>
 
 
 ### Reverse-Proky eingerichtet
 Geht der Zugriff mit localhost:8011, so habe ich den Reverse Proxy erfolgreich konfiguriert. Dies habe ich mit Curl getestet.
 
-![screen 3](https://github.com/nils1320/M300/blob/dfb38476f527a4677c40651ea799731105299342/Pictures/3.png)
+![screen 3](https://github.com/nils1320/M300/blob/main/Pictures/3.png?raw=true)
 <br>
 
 
@@ -369,5 +369,5 @@ An diesem Tag hatten wir zunächst eine theoretische Einführung, um einen Über
 Heute habe ich viel Zeit damit verbracht, ein Vagrantfile zu erstellen, um eine virtuelle Maschine mit Nginx einzurichten. Dabei bin ich auf verschiedene Fehler gestoßen. Einer davon war, dass der Port 100 bereits belegt war, weshalb ich stattdessen den Port 101 verwendet habe. Obwohl die VM erfolgreich erstellt wurde, konnte ich nicht über den Webbrowser darauf zugreifen. Nachdem ich den Port auf 8011 geändert hatte, funktionierte der Zugriff endlich. Trotz der Herausforderungen konnte ich letztendlich eine funktionierende Umgebung mit Nginx schaffen und habe dabei gelernt, wie wichtig Geduld und das Ausprobieren verschiedener Lösungswege sind.
 
 #### Tag 4
-Heute startete ich meine Vagrant-VM mithilfe des Befehls "vagrant up", um meine Arbeit fortsetzen zu können. Alles lief reibungslos, und ich konnte Testfälle erstellen und durchführen, ohne auf Probleme zu stoßen. Anschließend aktualisierte ich meine Dokumentation, indem ich die Punkte aus dem Bewertungsraster, die die Umgebungseinrichtung betrafen, entfernte, da sie bereits gut dokumentiert waren. Es war überraschend, aber erfreulich, dass heute keine größeren Probleme auftraten. Diese reibungslose Erfahrung ermöglichte es mir, meine Aufgaben effizient zu erledigen und mich auf andere Aspekte meiner Arbeit zu konzentrieren.
+Heute startete ich meine Vagrant-VM mithilfe des Befehls "vagrant up", um meine Arbeit fortsetzen zu können. Alles lief reibungslos, und ich konnte Testfälle erstellen und durchführen, ohne auf Probleme zu stossen. Anschliessend aktualisierte ich meine Dokumentation, indem ich die Punkte aus dem Bewertungsraster, die die Umgebungseinrichtung betrafen, entfernte, da sie bereits gut dokumentiert waren. Es war überraschend, aber erfreulich, dass heute keine größeren Probleme auftraten. Diese reibungslose Erfahrung ermöglichte es mir, meine Aufgaben effizient zu erledigen und mich auf andere Aspekte meiner Arbeit zu konzentrieren.
 
