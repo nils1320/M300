@@ -287,7 +287,7 @@ Vagrant Config Ende
 
 Zuerst konnte ich die VM mit dem Vagrantfile nicht erstellen.
 
-![image](https://user-images.githubusercontent.com/125886145/223131969-60fb59c3-5688-4575-b136-4119ac78e180.png)
+![image](https://github.com/nils1320/M300/blob/main/Pictures/1.png)
 
 <br>
 Nun geht es. Ich hatte vorhin Port 101 für den Host verwendet, aber mit diesem ging es nicht. Also habe ich den Port zu 8011 gewechselt da dieser sicher frei ist. Nun geht es endlich.
