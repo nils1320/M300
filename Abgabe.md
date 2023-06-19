@@ -34,7 +34,7 @@
 ### Netzwerkplan
 <br>
 
-![Netzwerkplan_Rico](https://user-images.githubusercontent.com/125886145/224711821-10bad918-ab3e-42ca-b12b-09d9482f08f5.png)
+![Netzwerkplan]([https://user-images.githubusercontent.com/125886145/224711821-10bad918-ab3e-42ca-b12b-09d9482f08f5.png](https://github.com/nils1320/M300/blob/main/Pictures/8.png?raw=true))
 
 <br>
 
