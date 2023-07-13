@@ -91,7 +91,6 @@ Danach das Image umbennen, damit es einfacher zu erkennen ist:
 docker tag <ID> apache2
 ```
 
-![](Screens/docker_tag_docker_run.png "Docker tag")
 <br>
 
 
