@@ -47,7 +47,7 @@ Docker ist eine Freie Software zur Isolierung von Anwendungen mit Hilfe von Cont
 
 ## Netzwerkplan
 
-![](https://github.com/nils1320/M300/blob/main/Pictures/Netzwerkplan_Container_neu.png "Netzwerkplan")
+![](https://github.com/nils1320/M300/blob/08589f66ef495d1c11b45537469e1d3150a4aa5b/Pictures/Netzwerkplan_Container_neu.png "Netzwerkplan")
 
 <br>
 
@@ -83,7 +83,7 @@ Zuerst wird ein Image erstellt:
 docker build .
 ```
 
-![](Screens/docker_build.png "Docker Build")
+![](https://github.com/nils1320/M300/blob/0909c31d587b2a0c036113c34954f6b47a66ae7a/Pictures/docker_build.png "Docker Build")
 <br>
 
 Danach das Image umbennen, damit es einfacher zu erkennen ist:
