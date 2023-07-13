@@ -216,7 +216,7 @@ Jetzt muss das yaml file noch applied werden, damit die Container erstellt werde
 kubectl apply -f deployment.yaml
 ```
 
-![](Screens/kubectl%20apply.png "kubectl apply")
+![](https://github.com/nils1320/M300/blob/3d9cacc18195992feab47912dfd7a53eb98948c7/Pictures/kubectl%20apply.png "kubectl apply")
 <br>
 
 Mit folgendem Command kann man nun die Pods anzeigen:
@@ -224,7 +224,7 @@ Mit folgendem Command kann man nun die Pods anzeigen:
 kubectl get pods
 ```
 
-![](Screens/kubectl%20get%20pods.png "get Pods")
+![](https://github.com/nils1320/M300/blob/89fe3cf8f985dd1f5e56f461ef2c5d22582e23e7/Pictures/kubectl%20get%20pods.png "get Pods")
 
 
 ### Service
@@ -255,7 +255,7 @@ Nun muss man den Service ausführen:
 kubectl apply -f loadbalance.yaml
 ```
 
-![](Screens/apply%20loadbalance.png "apply loadbalance")
+![](https://github.com/nils1320/M300/blob/7a941e61f18693a91d303d0af7ad757f7c6fded1/Pictures/apply%20loadbalance.png "apply loadbalance")
 
 
 Und so kann er angezeigt werden:
@@ -263,12 +263,12 @@ Und so kann er angezeigt werden:
 kubectl get services
 ```
 
-![](Screens/kubectl%20get%20services.png "get Services")
+![](https://github.com/nils1320/M300/blob/4451d1af1fde1092d068d3191a31085a1ca9e960/Pictures/kubectl%20get%20services.png "get Services")
 <br>
 
 Jetzt kann man auf die Webseite zugreifen:
 
-![](Screens/kubernetas%20apache.png "Apache")
+![](https://github.com/nils1320/M300/blob/8a30cc149a1c3f6224856f8d1fa346cfba72ce11/Pictures/kubernetas%20apache.png "Apache")
 
 
 ## Persönliche Lernentwicklung
