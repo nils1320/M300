@@ -1,0 +1,294 @@
+# LB3
+
+## Inhaltsverzeichnis
+- [LB3](#lb3)
+  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  - [Docker](#docker)
+  - [Befehle](#befehle)
+  - [Netzwerkplan](#netzwerkplan)
+    - [Dockerfile](#dockerfile)
+      - [Container starten](#container-starten)
+    - [Service Überwachung](#service-überwachung)
+    - [Container Sicherheit](#container-sicherheit)
+      - [Read-Only](#read-only)
+  - [Kubernetes](#kubernetes)
+    - [Deployment yaml erstellen](#deployment-yaml-erstellen)
+    - [Service](#service)
+  - [Persönliche Lernentwicklung](#persönliche-lernentwicklung)
+    - [Vergleich Vorwissen - Wissenszuwachs](#vergleich-vorwissen---wissenszuwachs)
+      - [Vorwissen im Bezug zum Modul und LB3](#vorwissen-im-bezug-zum-modul-und-lb3)
+      - [Neues Wissen](#neues-wissen)
+    - [Reflexion](#reflexion)
+      - [Tag 5](#tag-5)
+      - [Tag 6](#tag-6)
+      - [Tag 7 / mein letzter Tag](#tag-7--mein-letzter-tag)
+      - [Gesamtreflexion](#gesamtreflexion)
+
+
+## Docker
+Docker ist eine Freie Software zur Isolierung von Anwendungen mit Hilfe von Containervirtualisierung. Docker vereinfacht die Bereitstellung von Anwendungen, weil sich Container, die alle nötigen Pakete enthalten, leicht als Dateien transportieren und installieren lassen.
+<br>
+
+## Befehle
+| Befehl            | Funktion                                             |
+| -------------     | ---------------------------------------------------- | 
+| ```docker pull```      | Holt ein Image. |
+| ```docker run```      | Started VM mit dem ausgewähltem Image. |
+| ```docker ps```      | Zeigt laufende Maschinen. |
+| ```docker version```      | Zeigt die Docker Version von Echo-Client und Server an. |
+| ```docker images```        | Listet alle Docker Images auf. |
+| ```docker exec```       | Führt einen Befehl in einem laufenden Container aus. |
+| ```docker search```    | Durchsucht das Docker Hub nach Images. |
+| ```docker attach```      | Hängt etwas an einen laufenden Container an. |
+| ```docker commit```   | Erstellt ein neues Image mit den Änderungen, die an einem Container vorgenommen worden sind. |
+| ```docker stop```   | Haltet die gewünschte Maschine an. |
+
+<br>
+
+## Netzwerkplan
+
+![](https://github.com/nils1320/M300/blob/08589f66ef495d1c11b45537469e1d3150a4aa5b/Pictures/Netzwerkplan_Container_neu.png "Netzwerkplan")
+
+<br>
+
+### Dockerfile
+
+```
+#
+#	  Einfache Apache Umgebung
+#
+FROM ubuntu:14.04
+RUN apt-get update
+RUN apt-get -q -y install apache2 
+# Konfiguration Apache
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+RUN mkdir -p /var/lock/apache2 /var/run/apache2
+EXPOSE 80
+VOLUME /var/www/html
+CMD /bin/bash -c "source /etc/apache2/envvars && exec /usr/sbin/apache2 -DFOREGROUND"
+```
+
+<br>
+
+#### Container starten
+Zuerst zum Verzeichnis wechseln:
+```
+cd M3000R\LB3
+```
+
+Zuerst wird ein Image erstellt:
+```
+docker build .
+```
+
+![](https://github.com/nils1320/M300/blob/0909c31d587b2a0c036113c34954f6b47a66ae7a/Pictures/docker_build.png "Docker Build")
+<br>
+
+Danach das Image umbennen, damit es einfacher zu erkennen ist:
+``` 
+docker tag <ID> apache2
+```
+
+<br>
+
+
+Nun kann man die VM starten (hier wird der Port 8080 weitergeleitet):
+```
+docker run --rm -d -p 8080:80 -v web:/var/www/html --name apache2 <ID>
+```
+
+So könnte man im nachhinein auf die Shell zugreifen:
+```
+winpty docker exec -it apache2 bash
+```
+
+![](https://github.com/nils1320/M300/blob/7f900c490eda7b036a66b4d624b099a045cdd737/Pictures/docker_exec.png "Docker exec")
+<br>
+
+So könnte man auch die Webseite abändern:
+```
+docker cp index.html apache2:/var/www/html/
+```
+
+So sieht mein abgeänderter HTML Code aus:
+
+![](https://github.com/nils1320/M300/blob/6eae072d0ac67e7fbde057b3b4f4d23a7ff712bd/Pictures/html_code.png "HTML Code")
+<br>
+
+Und so sieht dann die Webseite aus:
+
+![](https://github.com/nils1320/M300/blob/1c94bed52a1d0f8d3aa900708c052dd0f263e33f/Pictures/Webseite_funktioniert.png "Website")
+
+<br>
+
+### Service Überwachung
+Dies Überwachung haben mir mittels Prometheus gemacht. Dafür musste zuerst yaml File erstellt werden mit folgendem Inhalt:
+```
+global:
+  scrape_interval:     15s # By default, scrape targets every 15 seconds.
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+
+  - job_name: 'prometheus'
+
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: ['localhost:9090']
+
+
+  - job_name: 'node'
+
+    static_configs:
+      - targets: ['0.0.0.0:8080']
+```
+
+Danach musste man noch folgenden Docker run Befehl ausführen:
+```
+docker run -p 9090:9090 -v prometheus.yaml:/etc/prometheus/prometheus.yaml prom/prometheus
+```
+
+Somit kann man nun im Browser mit "localhost:9090" auf diesen Service zugreifen.
+
+![](https://github.com/nils1320/M300/blob/ed570f5073107d3462f986412430116a1c9ec215/Pictures/prometheus.png "Überwachung Prometheus")
+
+<br>
+
+### Container Sicherheit
+Hiermit kann der normale User keine sudo Befehle ausführen:
+Das Dockerfile muss folgendes beinhalten:
+```
+RUN useradd -ms /bin/bash Username
+USER Username
+WORKDIR /homedir
+```
+
+<br>
+
+#### Read-Only
+Wenn man den Docker mit der Option read-only startet, können keine Änderungen am Dateisystem vorgenommen werden (auch mit sudo nicht):
+```
+docker run --read-only -d -t --name apache2 apache2
+
+```
+<br>
+
+
+## Kubernetes
+
+### Deployment yaml erstellen
+```
+touch deployment.yaml
+```
+
+Inhalt der Date deployment.yaml:
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubdeployment
+  labels:
+    app: kub
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: kub
+  template:
+    metadata:
+      labels:
+        app: kub
+    spec:
+      containers:
+      - name: kub-webserver
+        image: webserver
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+```
+Jetzt muss das yaml file noch applied werden, damit die Container erstellt werden. Dafür muss man diesen Commmand eingeben:
+```
+kubectl apply -f deployment.yaml
+```
+
+![](https://github.com/nils1320/M300/blob/3d9cacc18195992feab47912dfd7a53eb98948c7/Pictures/kubectl%20apply.png "kubectl apply")
+<br>
+
+Mit folgendem Command kann man nun die Pods anzeigen:
+```
+kubectl get pods
+```
+
+![](https://github.com/nils1320/M300/blob/89fe3cf8f985dd1f5e56f461ef2c5d22582e23e7/Pictures/kubectl%20get%20pods.png "get Pods")
+
+
+### Service
+
+Jetzt muss noch ein loadbalance.yaml file erstellt werden mit diesm Inhalt:
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubservice
+  annotations:
+    service.beta.kubernetes.io/linode-loadbalancer-throttle: "4"
+  labels:
+    app: kubservice
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: kub
+  sessionAffinity: None
+```
+Nun muss man den Service ausführen:
+```
+kubectl apply -f loadbalance.yaml
+```
+
+![](https://github.com/nils1320/M300/blob/7a941e61f18693a91d303d0af7ad757f7c6fded1/Pictures/apply%20loadbalance.png "apply loadbalance")
+
+
+Und so kann er angezeigt werden:
+```
+kubectl get services
+```
+
+![](https://github.com/nils1320/M300/blob/4451d1af1fde1092d068d3191a31085a1ca9e960/Pictures/kubectl%20get%20services.png "get Services")
+<br>
+
+Jetzt kann man auf die Webseite zugreifen:
+
+![](https://github.com/nils1320/M300/blob/8a30cc149a1c3f6224856f8d1fa346cfba72ce11/Pictures/kubernetas%20apache.png "Apache")
+
+
+## Persönliche Lernentwicklung
+
+### Vergleich Vorwissen - Wissenszuwachs
+
+#### Vorwissen im Bezug zum Modul und LB3
+- gar keines
+
+#### Neues Wissen
+- Aufbau von Docker
+- Docker Befehle
+- Das man nie Daten in Container speichern soll
+- Begriff DevOps 
+- WSL2 kann nicht alles perfekt und nicht alle Tools funktionieren
+- Kubernetes kennengelernt
+- Kubernetes verwendet mit Docker und Apache
+
+<br>
+
+### Reflexion
+#### Gesamtreflexion
+Wenn ich ehrlich bin, habe ich in diesem Modul nicht viel gemacht, habe allerdings einfach geschaut, dass es läuft und das meiste mit Hilfe des Internets, da ich denke, dass man die Möglichkeiten nutzen soll, welche man zur Verfügung hat. Ich bin allgemein eine Person, welche alles auf den letzten Drücker macht, allerdings weiss ich mir dann zu helfen und ich gebe mein bestes, was leider nicht immer das beste für andere bedeutet. Ich sollte das ändern, wenn ich die IPA bestehen möchte und werde alles dafür geben, das umzusetzen. Ich kann aber offen und ehrlich sagen, dass es mir in diesem Modul nicht wirklich gelungen ist mich zu motivieren, da ich das Thema wirklich nicht spannend gefunden habe. Troz allem hat Herr Rohr gute Arbeit geleistet und versucht mir den Stoff nahezubringen. Ich hoffe dass die LB3 ein bisschen einsichtiger ist als die LB2 und hoffe, dass es für einen 4er im Schnitt reicht. Trozdem habe ich viel von dem Modul mitgenommen (oben erwähnt) und hoffe, dass ich dieses Wissen behalten und anwenden kann.
